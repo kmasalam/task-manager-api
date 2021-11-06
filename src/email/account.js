@@ -45,7 +45,7 @@ async function cencelService(email,name){
     
 
     console.log("Message sent: %s", info.messageId);
-}
+} 
 
 
 module.exports={
