@@ -1,0 +1,149 @@
+//CRUD  Create Read Update Delete
+const { MongoClient,ObjectId } = require('mongodb');
+// Connection URL
+const url = 'mongodb://localhost:27017';
+const client = new MongoClient(url);
+
+// Database Name
+const dbName = 'task-manager';
+
+async function main() {
+    // Use connect method to connect to the server
+    await client.connect();
+    console.log('Connected successfully to server');
+    // const x = ObjectId()
+    // console.log('object id',x.str);
+    const db = client.db(dbName);
+    const collection = client.db().collection('users');
+    const taskCollection = client.db().collection('tasks');
+  
+  
+    // the following code examples can be pasted here...
+//     try {
+//         const insertResult = await collection.insertOne({
+//         name: 'hossain',
+//         age: 27
+//       });
+
+//       console.log(insertResult);
+//     }
+//     catch (error) {
+    
+//       if (error instanceof MongoServerError) {
+//         console.log(`Error worth logging: ${error}`); 
+//       }
+//       throw error; 
+//   }
+
+// collection.insertMany([
+//         {
+//             name: 'Rabeya',
+//             age: 23
+//         },
+//         {
+//             name: 'Mohon',
+//             age: 38,
+//         }
+//     ],(AnyError,result)=>{
+//         if(AnyError){
+//             console.log('AnyError',AnyError)
+//         }
+//         console.log('result is ',result.insertedIds.toString());
+//     })
+
+    // task collection code
+   
+    // taskCollection.insertMany([
+    //     {
+    //         description: 'learning',
+    //         completed: true,
+    //     },
+    //     {
+    //         description: 'walking',
+    //         completed: false,
+    //     },
+    //     {
+    //         description: 'sleeping',
+    //         completed: true
+    //     }
+    // ],(error,result)=>{
+    //     if(error){
+    //         console.log(error);
+    //     }
+    //     console.log(result);
+    // })
+
+    // data fetching
+     
+    // collection.find({
+    //     name: 'Rabeya',
+    //     age: 24
+    // }).toArray((error,FindCursor)=>{
+    //     if(error){
+    //         return console.log('error is ',error);
+    //     }
+    //     console.log('response is ', FindCursor.id);
+    // })
+
+    // collection.find({
+    //     name: 'Rabeya'
+    // }).count((error,count)=>{
+    //     if(error){
+    //         return console.log('error is ',error);
+    //     }
+    //     console.log('response is ', count);
+    // })
+
+    // taskCollection.findOne({name: 'working'},(error,result)=>{
+    //     if(error){
+    //         return console.log('error is', error);
+    //     }
+    //     console.log(result);
+    // })
+
+    // taskCollection.find({
+    //     completed: true
+    // }).toArray((error,result)=>{
+    //     if(error){
+    //        return console.log('error is', error);
+    //     }
+    //     console.log(result);
+    // })
+
+    // collection.updateOne({
+    //     _id: ObjectId('61481ab4c2737902d9b12359')
+    // },{
+    //     $inc: {
+    //         age: 1
+    //     }
+    // }).then((result)=>{
+    //     console.log('resutl is ', result);
+    // }).catch((error)=>{
+    //     console.log('error is ',error)
+    // })
+
+    // taskCollection.updateMany({
+    //     completed: false
+    // },{
+    //     $set: {
+    //         completed: true
+    //     }
+    // }).then((result)=>{
+    //     console.log('result is' , result);
+    // }).catch((error)=>{
+    //     console.log('error is ',erroor)
+    // })
+
+
+
+    // delete
+    collection.deleteMany({
+        age: 38  
+    }).then((result)=>{
+        console.log('result is', result);
+    }).catch((error)=>{
+        console.log('error is ', error)
+    })
+}
+  
+  main()
