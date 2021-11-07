@@ -14,7 +14,10 @@ const port = process.env.PORT;
 
 
 
-
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
 
 
 
