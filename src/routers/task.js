@@ -30,7 +30,7 @@ router.get('/tasks',auth,async(req,res)=>{
     const match = {};
     const sort = {};
     const skip = 0
-    const limit = 4
+    const limit = 10
 
     if(req.query.completed){
         match.completed = req.query.completed == 'true'
